@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="eyetracker_talker" type="eyetracker_talker" name="eyetracker_talker"  output="screen"/>
+</launch>
