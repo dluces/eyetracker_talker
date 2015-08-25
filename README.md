@@ -28,6 +28,7 @@ To be updated
       python "%~dp0%~n0" %*
       REM End of proxy batch script
       ```
+
 ### More Information
 
 Read on how to develop using Catkin in Windows: http://wiki.ros.org/win_ros/hydro/Msvc%20Overlays
@@ -82,4 +83,4 @@ Clone this repo in the src directory of your workspace.
 
 This project needs, of course, a machine with a Tobii EyeX controller. It also needs the Tobii Engine running in the same machine.
 
-This project uses and includes the Tobii EyeX C++ SDK (header files and compiled libraries).
+This project uses and includes the Tobii EyeX C++ SDK header files. The compiled libraries should be placed in a lib directory. The lib directory should have an x86 and an x64 folders with Tobii.EyeX.Client.dll and Tobii.EyeX.Client.lib files in both. These files are required to compile, install and run the node.
