@@ -18,10 +18,12 @@
 
 #include <ros/ros.h>
 #include <geometry_msgs/Point32.h>
+#include <eyetracker_talker/GazeData.h>
 #include <eyex\EyeX.h>
 
 namespace eyetracker_talker
 {
+
   /**
    * @brief Template class for $(package)s
    */
@@ -37,15 +39,20 @@ namespace eyetracker_talker
     static TX_TICKET g_hConnectionStateChangedTicket;
     static TX_TICKET g_hEventHandlerTicket;
 
-    static geometry_msgs::Point32 point;
+    static eyetracker_talker::GazeData last_data;
+    static eyetracker_talker::GazeData data;
     static ros::Publisher chatter_pub;
+    static bool started;
+    static float last_blink_diff;
+    static unsigned char consecutive_blinks;
 
     static int run(int, char **);
     static void initRosNode(int, char **);
     static bool initEyeX();
     static bool closeEyeX();
     static void closeRosNode();
-    static void sendPoint(float, float);
+    static void createGazeMessage(float, float, float);
+    static void sendGazeMessage();
 
     static void TX_CALLCONVENTION OnSnapshotCommitted(TX_CONSTHANDLE, TX_USERPARAM);
     static void TX_CALLCONVENTION OnEngineConnectionStateChanged(TX_CONNECTIONSTATE, TX_USERPARAM);

@@ -19,7 +19,7 @@ find_package(catkin
 
 add_message_files(
   FILES
-  EyeTracker.msg
+  GazeData.msg
 )
 
 generate_messages(
@@ -81,6 +81,8 @@ endif ()
 
 add_library(eyetracker_talker src/lib/eyetracker_talker.cpp)
 target_link_libraries(eyetracker_talker ${ALL_LIBS} ${catkin_LIBRARIES})
+
+add_dependencies(eyetracker_talker eyetracker_talker_generate_messages_cpp)
 
 set_target_properties(eyetracker_talker
   PROPERTIES OUTPUT_NAME libeyetrackertalker
